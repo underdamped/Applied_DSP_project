@@ -11,12 +11,13 @@ using the Teensy 3.6 dev board (ARM Cortex-M4 core) and the ARM CMSIS DSP librar
 
 The system essentially employs a client-server model:
 
-Using MATLAB on a (little-endian) PC, a user calls filterTeensy() to transfer
+Using MATLAB on a (*little-endian*) PC, a user calls filterTeensy() to transfer
 audio data or such over USB serial to the Teensy, which in turn filters the data
 and transfers it back to MATLAB.
 
 Typical usage example (in MATLAB):
 
+```javascript
 % get audio data
 [y, Fs] = audioread('filename.wav');
 
@@ -26,6 +27,7 @@ fopen(s);
 
 % filter the data
 out = filterTeensy(s,y)
+```
 
 The filter response is defined by the coefficient array 'coeff', located in
 the Applied_DSP_project.ino source file.  Currently it's a 128th order BPF
